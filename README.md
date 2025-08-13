@@ -1,58 +1,51 @@
 # AI Job Recommender
 
-This is a small project I built to recommend jobs based on a resume or skills you give it.  
-You can either upload your resume (PDF) or type in your skills, years of experience, and optionally a location.  
-It will search jobs from LinkedIn (via SerpAPI) and then use Google's Gemini AI to score the jobs based on your profile.
+## Project Description
+The **AI Job Recommender** is a smart job search assistant I built to make finding relevant opportunities faster and less frustrating.  
+Instead of scrolling endlessly through LinkedIn, you can upload your resume or type your skills, and the app will:
+- Fetch real job listings from LinkedIn
+- Score them based on your profile using Google Gemini AI
+- Show you the best matches first
+
+It combines **resume parsing, job scraping, and AI-based scoring** into a single, easy-to-use Streamlit dashboard.
 
 ---
 
-## What it does
-- Lets you upload a resume OR enter details manually
-- Pulls job listings from LinkedIn using SerpAPI
-- Uses Gemini to figure out which jobs match your profile best
-- Shows you the top jobs in a simple Streamlit UI
-- Runs scoring in parallel (async) so it’s faster when there are many jobs
-- Avoids rescoring the same job twice (caching)
+## Features
+- **Resume Upload or Manual Input** – works for both PDF resumes and direct skill entry
+- **LinkedIn Job Fetching** – powered by SerpAPI for live job data
+- **AI Scoring** – Google Gemini evaluates job relevance based on your skills & experience
+- **Async Processing** – scores multiple jobs in parallel for speed
+- **Caching** – avoids rescoring duplicate job descriptions
+- **Clean UI** – quick, interactive interface built with Streamlit
 
 ---
 
-## Tech I used
-- **Python** for the main logic
-- **Streamlit** for the interface
-- **LangChain** to parse resumes
-- **Google Generative AI (Gemini)** for job scoring
-- **SerpAPI** for job scraping from LinkedIn
-- **asyncio** for concurrent scoring
-- **joblib** for caching
-
----
-
-## How to run it
-
-1. Clone the repo
-```bash
-git clone https://github.com/yourusername/AI_JOB_RECOMMENDER.git
-cd AI_JOB_RECOMMENDER
-Create a virtual environment and activate it
+## How to Run
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/ai-job-recommender.git
+   cd ai-job-recommender
+Create and activate a virtual environment
 
 bash
 Copy
 Edit
 python -m venv myenv
-myenv\Scripts\activate  # On Windows
-source myenv/bin/activate  # On Mac/Linux
+source myenv/bin/activate   # Mac/Linux
+myenv\Scripts\activate      # Windows
 Install dependencies
 
 bash
 Copy
 Edit
 pip install -r requirements.txt
-Create a .env.local file in the project folder with your API keys:
+Set environment variables in .env (create this file in the project root)
 
 ini
 Copy
 Edit
-SERPAPI_KEY=your_serpapi_key
+SERPAPI_API_KEY=your_serpapi_key
 GOOGLE_API_KEY=your_google_api_key
 Run the app
 
@@ -60,22 +53,42 @@ bash
 Copy
 Edit
 streamlit run app.py
-File structure
-bash
+Sample Input/Output
+Sample Input (Manual entry)
+
+makefile
 Copy
 Edit
-app.py              # Main Streamlit app
-ai.py               # Gemini scoring logic (async + cache)
-job_search.py       # LinkedIn job fetching
-resume_parser.py    # Resume parsing with LangChain
-requirements.txt    # Dependencies
-.env.local          # Your API keys
-README.md           # This file
-Notes / Gotchas
-SerpAPI needs a valid API key and you may need a paid plan for many searches
+Skills: Python, Data Analysis, SQL, Machine Learning
+Experience: 3
+Location: Remote
+Sample Output (AI-ranked jobs)
 
-Gemini models keep changing names — I used gemini-1.5-pro, but check your account for the latest available models
+Rank	Job Title	Company	Match Score
+1	Data Analyst (Remote)	TechCorp Ltd	92%
+2	Machine Learning Eng.	AI Solutions	88%
+3	SQL Data Specialist	DataWorks	83%
 
-If you see “404 model not found” errors, just swap the model name in ai.py
+Screenshots
+<img width="1897" height="862" alt="image" src="https://github.com/user-attachments/assets/c7ccbe06-9159-45e4-9e41-705faa37db8a" />
+<img width="1792" height="741" alt="image" src="https://github.com/user-attachments/assets/0344d8fa-d181-4999-bfe5-92e8545ae45d" />
 
-The async batching makes a big difference when there are lots of jobs to score
+
+
+AI Scored Results
+
+#Tech Stack
+Python
+
+Streamlit – frontend UI
+
+LangChain – resume parsing
+
+SerpAPI – LinkedIn job scraping
+
+Google Gemini – AI scoring
+
+AsyncIO – parallel processing
+
+Author
+Built by B.Ajay MArtin Ferdinand as a portfolio project to combine AI with practical job searching.
